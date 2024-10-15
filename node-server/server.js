@@ -17,6 +17,7 @@ wss.on('connection', (ws) => {
     // Send data every N milliseconds
     const intervalId = setInterval(() => {
         const data = {
+            id: Math.random() >= 0.5 ? 1 : 0,
             timestamp: new Date().getTime(),
             value: Math.random(),
         };

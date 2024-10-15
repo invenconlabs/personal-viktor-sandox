@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { DataPoint } from '../assets/components/ui/DataPoint';
+import { DataPoint } from '../components/ui/DataPoint';
 
 export const useData = (windowSize: number) => {
   const [data, setData] = useState<DataPoint[]>([]);
@@ -32,6 +32,6 @@ export const useData = (windowSize: number) => {
     return () => {
       ws.close();
     };
-  }, []);
+  }, [windowSize]);
   return { data };
 };

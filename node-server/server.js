@@ -16,10 +16,11 @@ wss.on('connection', (ws) => {
 
     // Send data every N milliseconds
     const intervalId = setInterval(() => {
+        const randomValue = Math.random();
         const data = {
-            id: Math.random() >= 0.5 ? 1 : 0,
+            id: randomValue >= 0.5 ? 1 : 0,
             timestamp: new Date().getTime(),
-            value: Math.random(),
+            value: randomValue,
         };
 
         const json = JSON.stringify(data);

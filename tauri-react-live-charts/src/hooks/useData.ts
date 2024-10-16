@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { DataPoint } from '../components/ui/DataPoint';
 
 export const useData = (windowSize: number) => {
-  const [data, setData] = useState<DataPoint[]>([]);
+  const [data, setData] = useState<DataPoint>();
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:8080');
 
@@ -12,12 +12,7 @@ export const useData = (windowSize: number) => {
 
     ws.onmessage = (event) => {
       const dataPoint = JSON.parse(event.data) as DataPoint;
-      setData((prev) => {
-        if (prev.length >= windowSize) {
-          return [...prev.slice(1), dataPoint];
-        }
-        return [...prev, dataPoint];
-      });
+      setData(dataPoint);
     };
 
     ws.onclose = () => {

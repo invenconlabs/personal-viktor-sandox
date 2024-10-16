@@ -32,6 +32,6 @@ export const useData = (windowSize: number) => {
     return () => {
       ws.close();
     };
-  }, []);
+  }, [windowSize]);
   return { data };
 };

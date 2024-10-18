@@ -35,3 +35,33 @@ export const useData = (windowSize: number) => {
   }, [windowSize]);
   return { data };
 };
+
+export const useDataPoint = () => {
+  const [dataPoint, setDataPoint] = useState<DataPoint>();
+  useEffect(() => {
+    const ws = new WebSocket('ws://localhost:8080');
+
+    ws.onopen = () => {
+      console.log('Connected to WebSocket server');
+    };
+
+    ws.onmessage = (event) => {
+      const dataPoint = JSON.parse(event.data) as DataPoint;
+      setDataPoint(dataPoint);
+    };
+
+    ws.onclose = () => {
+      console.log('Disconnected from WebSocket server');
+    };
+
+    ws.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    // Cleanup on component unmount
+    return () => {
+      ws.close();
+    };
+  }, []);
+  return { dataPoint };
+};

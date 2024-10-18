@@ -1,18 +1,14 @@
-import { Chart, LinearScale, LineController, LineElement, PointElement } from 'chart.js/auto';
+import Chart from 'chart.js/auto';
 import { useEffect, useRef, useState } from 'react';
 import { DataPoint } from './DataPoint';
-import { RealTimeScale } from '@robloche/chartjs-plugin-streaming';
+import StreamingPlugin from '@robloche/chartjs-plugin-streaming';
 import 'chartjs-adapter-luxon';
 
 type TestCanvasProps = {
   dataPoint: DataPoint;
 };
 
-Chart.register(RealTimeScale);
-Chart.register(LineController);
-Chart.register(LinearScale);
-Chart.register(PointElement);
-Chart.register(LineElement);
+Chart.register(StreamingPlugin);
 
 export const TestCanvas = ({ dataPoint }: TestCanvasProps) => {
   const [chart, setChart] = useState<Chart>();
@@ -49,6 +45,7 @@ export const TestCanvas = ({ dataPoint }: TestCanvasProps) => {
               realtime: {
                 delay: 250,
                 onRefresh: (chart: Chart) => {
+                  console.log(dataPoint);
                   chart.data.datasets[0].data.push({
                     y: dataPoint.value,
                     x: dataPoint.timestamp,

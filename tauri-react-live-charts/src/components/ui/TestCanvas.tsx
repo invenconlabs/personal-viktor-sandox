@@ -13,11 +13,24 @@ export const TestCanvas = ({ freeze, onAddPoint }: { freeze: boolean; onAddPoint
     labels: [],
     datasets: [
       {
-        label: 'dataset',
+        label: 'dataset1',
         data: [],
         fill: false,
-        backgroundColor: 'rgba(75,192,192,0.2)',
-        borderColor: 'rgba(75,192,192,1)',
+        borderColor: 'rgba(252, 119, 170,1)',
+        borderWidth: 0.5,
+        pointBorderWidth: 0.5,
+        pointRadius: 0.5,
+        pointHitRadius: 3,
+      },
+      {
+        label: 'dataset2',
+        data: [],
+        fill: false,
+        borderColor: 'rgba(218,247,166,1)',
+        borderWidth: 0.5,
+        pointBorderWidth: 0.5,
+        pointRadius: 0.5,
+        pointHitRadius: 3,
       },
     ],
   }));
@@ -27,16 +40,17 @@ export const TestCanvas = ({ freeze, onAddPoint }: { freeze: boolean; onAddPoint
     resizeDelay: 500,
     animation: false,
     aspectRatio: 6,
+    parsing: false,
     onResize(chart, size) {
       console.log(size);
     },
     plugins: {
       streaming: {
-        duration: 600_000,
+        duration: 60_000,
         ttl: 600_000,
-        delay: 1000,
+        delay: 100,
         frameRate: 30,
-        refresh: 250,
+        refresh: 100,
         pause: freeze,
       },
     },
@@ -45,10 +59,14 @@ export const TestCanvas = ({ freeze, onAddPoint }: { freeze: boolean; onAddPoint
         type: 'realtime',
         realtime: {
           onRefresh: (chart: Chart) => {
-            chart.data.datasets[0].data.push({
-              x: new Date().getTime(),
-              y: Math.random(),
-            });
+            const timestamp = new Date().getTime();
+            chart.data.datasets.forEach((ds) =>
+              ds.data.push({
+                x: timestamp,
+                y: Math.random(),
+              }),
+            );
+
             onAddPoint();
           },
         },
@@ -58,7 +76,7 @@ export const TestCanvas = ({ freeze, onAddPoint }: { freeze: boolean; onAddPoint
 
   return (
     <Line
-      style={{ position: 'relative', height: '40vh', width: '80vw' }}
+      style={{ position: 'relative', height: '20vh', width: '70vw' }}
       onClick={handleClick}
       ref={chartRef}
       data={data}

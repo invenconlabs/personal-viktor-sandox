@@ -41,7 +41,7 @@ export const TestCanvas = ({ freeze, onAddPoint }: { freeze: boolean; onAddPoint
     animation: false,
     aspectRatio: 6,
     parsing: false,
-    onResize(chart, size) {
+    onResize(_chart, size) {
       console.log(size);
     },
     plugins: {

@@ -1,8 +1,13 @@
-import { useData } from './hooks/useData';
+import { LineChart } from './components/ui/LineChart';
+import { useDataPoint } from './hooks/useDataPoint';
 
-function App() {
-  const { data } = useData(1000);
-  return <div>todo</div>;
-}
-
-export default App;
+export const App = () => {
+  const { dataPoint } = useDataPoint();
+  return (
+    dataPoint && (
+      <div>
+        <LineChart dataPoint={dataPoint} />
+      </div>
+    )
+  );
+};

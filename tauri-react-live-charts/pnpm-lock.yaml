@@ -14,6 +14,9 @@ importers:
       '@tauri-apps/plugin-shell':
         specifier: '>=2.0.0'
         version: 2.0.0
+      dygraphs:
+        specifier: ^2.2.1
+        version: 2.2.1
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -850,6 +853,9 @@ packages:
   doctrine@2.1.0:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
     engines: {node: '>=0.10.0'}
+
+  dygraphs@2.2.1:
+    resolution: {integrity: sha512-xnuvsvh2H/FKvJjTSlXgJpwCOhLOi3u0sHw1gsJg/Bmf29y6bnO14PbTz8MwHOa3GIbKqqgKVBMSOi+Z1gI2Gg==}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -2626,6 +2632,8 @@ snapshots:
   doctrine@2.1.0:
     dependencies:
       esutils: 2.0.3
+
+  dygraphs@2.2.1: {}
 
   eastasianwidth@0.2.0: {}
 

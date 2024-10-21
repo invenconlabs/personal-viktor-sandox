@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { DataPoint } from '../components/ui/DataPoint';
+import { DataPoint } from '../lib/types';
 
 export const useData = (windowSize: number) => {
   const [data, setData] = useState<DataPoint[]>([]);

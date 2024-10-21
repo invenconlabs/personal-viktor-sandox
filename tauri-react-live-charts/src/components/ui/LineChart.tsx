@@ -1,4 +1,4 @@
-import { DataPoint } from './DataPoint';
+import { DataPoint } from '../../lib/types';
 
 type LineChartProps = {
   data: DataPoint;

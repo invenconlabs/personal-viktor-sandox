@@ -1,8 +1,9 @@
-import { useData } from './hooks/useData';
+import { LineChart } from './components/ui/LineChart';
 
-function App() {
-  const { data } = useData(1000);
-  return <div>todo</div>;
-}
-
-export default App;
+export const App = () => {
+  return (
+    <div>
+      <LineChart />
+    </div>
+  );
+};

@@ -4,4 +4,6 @@ type LineChartProps = {
   data: DataPoint;
 };
 
-export const LineChart = (props: LineChartProps) => {};
+export const LineChart = () => {
+  return <div>LineChart</div>;
+};
